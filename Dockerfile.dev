@@ -1,0 +1,33 @@
+
+#wersja używana w środowisku developerskim
+#Szkolenie Docker i Kubernetes
+#Aplikacyjka wykorzystująca react
+# celem jest pokazanie działania zmapowanych woluminów	
+
+FROM node:alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# na skutek docker-compose zarządzającego wolumenami i zmapowania folerów kontenera poniższa operacja nie jest konieczna
+# ponieważ docker-compose to tylko dodatek, można z niego zrezygnować - lepiej zostawić tę instrukcję poniżej. 
+COPY . .    
+
+
+#CMD ["pwd"]
+#wynik powyższego /app
+
+#CMD ["ls",  "-al"] 
+#wynik powyższego - pokazuje 1 folder - node_modules.  Czyli wyświetla zawartość /app
+
+#CMD ["ls", "/app/src",  "-al"] 
+#wynik powyższego ls: /app/src no such file or directory
+
+#CMD ["ls", "/app/node_modules",  "-al"] 
+#wynik powyższego ls: prawidłowy
+
+# uruchamia development server; for development only 
+CMD ["npm", "run", "start"]
+#CMD ["sh"]
