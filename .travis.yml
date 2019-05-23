@@ -11,3 +11,4 @@ services:
 # w tym przypadku jest to npm run test .  -- --coverage to komenda, która 
   script:
   - docker run zm/docker-react npm run test -- --coverage
+  
