@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          Najnowsza zmiana czyli podła zmiana
+          Najnowsza zmiana czyli podła zmiana. EDIT z "NowyFeature" branch: precz z podłą zmianą!
         </p>
         <a
           className="App-link"
