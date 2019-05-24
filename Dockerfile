@@ -22,3 +22,7 @@ RUN npm run build
 # NA produkcji istotne jest tylko to co jest w katalogu build. Kopiowane jest to katalogu, w którym nginx spodziewa się zawartości
 FROM nginx
 COPY --from=builder /app/build /usr/share/nginx/html
+
+# dyrektywa EXPOSE jest przeznaczona dla człowieka, żeby poinformować o konieczności wyeksportowania portu podczas docker run
+# jednakoż AWS Beanstalk przetwarza tę informację zgodnie z jej przeznaczeniem. Bez tej dyrektywy krok deploy do EBS nie skończy się dobrze
+EXPOSE 80
