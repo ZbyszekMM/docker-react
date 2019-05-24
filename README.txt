@@ -6,3 +6,6 @@ Edit src/App.js and save to reload. Ewidentnie plik ten zawiera kliencki kod, hm
 
 Aby uruchomić wersję produkcyjną - zajrzyj do Dockerfile
 
+POPRAWKI
+    w package.json trzeba było zmienić klucz "test" dodająć "CI=true". Bez tego travis wisiał w nieskonczoność
+
