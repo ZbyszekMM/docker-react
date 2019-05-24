@@ -20,7 +20,7 @@ deploy:
   region: "eu-central-1"
   app: "docker-react" # nazwa aplikacji zgodnie z tym co jest w Elastic Beanstalk (EBS)
   env: "DockerReact-env" # nazwa pierwszego środowiska w EBS
-  bucket_name: "codepipeline-eu-central-1-33766326181" #nazwa bucketu, do którego uploadowany jest kod. JEDEN bucket dla wszystkich projektów EBS
+  bucket_name: "elasticbeanstalk-eu-central-1-392634375159" #nazwa bucketu, do którego uploadowany jest kod. JEDEN bucket dla wszystkich projektów EBS
   bucket_path: "docker-react"
   skip_cleanup: true # dodałem za dokumentacją travis by uniknąć problemu "no stash entries found" podczas deployowania do EBS
   on:
