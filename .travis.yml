@@ -14,3 +14,16 @@ before_install:
 # w tym przypadku jest to npm run test .  -- --coverage to komenda, która 
 script:
   - docker run zm/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "docker-react" # nazwa aplikacji zgodnie z tym co jest w Elastic Beanstalk (EBS)
+  env: "DockerReact-env" # nazwa pierwszego środowiska w EBS
+  bucket_name: "codepipeline-eu-central-1-33766326181" #nazwa bucketu, do którego uploadowany jest kod. JEDEN bucket dla wszystkich projektów EBS
+  bucket_path: "docker-react"
+  on:
+    branch: master # trigger deployment TYLKO jeśli zostanie skomitowana zmiana w master branch kodu
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY" # nie wiadomo dlaczego tutaj zadziałało autorowi tylko jeśli w ""
