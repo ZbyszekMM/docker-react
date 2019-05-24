@@ -1,14 +1,16 @@
 sudo: required
 services:
-  - docker
+- docker
 
-  before_install:
-  # image dostał nazwę zm/docker-react, tylko travis proces będzie znać tn tag
-  - docker build -t zm/docker-react -f Dockerfile.dev . 
+before_install:
+
+# image dostał nazwę zm/docker-react, tylko travis proces będzie znać tn tag
+- docker build -t zm/docker-react -f Dockerfile.dev . 
+
+
 
 # tutaj wszystkie komendy niezbędne do wykonania testów. Travis będzie sprawdzał rezultat każdej z tych komend
 # Jako ostatnie parameter docker run jest polecenie, które będzie wykonane w kontenerze po uruchomieniu jego
 # w tym przypadku jest to npm run test .  -- --coverage to komenda, która 
-  script:
+script:
   - docker run zm/docker-react npm run test -- --coverage
-  
