@@ -22,6 +22,7 @@ deploy:
   env: "DockerReact-env" # nazwa pierwszego środowiska w EBS
   bucket_name: "codepipeline-eu-central-1-33766326181" #nazwa bucketu, do którego uploadowany jest kod. JEDEN bucket dla wszystkich projektów EBS
   bucket_path: "docker-react"
+  skip_cleanup: true # dodałem za dokumentacją travis by uniknąć problemu "no stash entries found" podczas deployowania do EBS
   on:
     branch: master # trigger deployment TYLKO jeśli zostanie skomitowana zmiana w master branch kodu
   access_key_id: $AWS_ACCESS_KEY
