@@ -1,4 +1,5 @@
 sudo: required
+language: generic # prevent travis think it is Ruby project 
 services:
 - docker
 
@@ -13,5 +14,6 @@ before_install:
 # Jako ostatnie parameter docker run jest polecenie, które będzie wykonane w kontenerze po uruchomieniu jego
 # w tym przypadku jest to npm run test .  -- --coverage to komenda, która 
 script:
-  - docker run zm/docker-react npm run test -- --coverage
+#  - docker run zm/docker-react npm run test -- --coverage    # to mi zadziałało, chociaż kurs mówi, że je nie powinno
+   - docker run -e CI=true USERNAME/docker-react npm run test
 
