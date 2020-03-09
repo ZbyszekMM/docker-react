@@ -4,16 +4,17 @@ services:
 
 before_install:
 
-# image dostał nazwę zm/docker-react, tylko travis proces będzie znać tn tag
+# image dostał nazwę zm/docker-react, tylko travis proces będzie znać ten tag
 - docker build -t zm/docker-react -f Dockerfile.dev . 
-
-
 
 # tutaj wszystkie komendy niezbędne do wykonania testów. Travis będzie sprawdzał rezultat każdej z tych komend
 # Jako ostatnie parameter docker run jest polecenie, które będzie wykonane w kontenerze po uruchomieniu jego
-# w tym przypadku jest to npm run test .  -- --coverage to komenda, która 
+# w tym przypadku jest to npm run test . 
+#OBSOLETE -- --coverage to komenda, która powodowała, że npm run test nie wchodził w tryb interaktywny
+#CURRENT -e CI=true prawdopodobnie powoduje,  że nie wchodzi w tryb interaktywny
+
 script:
-  - docker run zm/docker-react npm run test -- --coverage
+  - docker run -e CI=true USERNAME/docker-react npm run test
 
 deploy:
   provider: elasticbeanstalk

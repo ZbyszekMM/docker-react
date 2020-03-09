@@ -26,3 +26,5 @@ REPOZYTORIUM W GITHUB
 
 QUIRKS
     Sposób w jaki AWS EBS przetwarza dyrektywę EXPOSE z Dockerfile
+    Żeby zapanować nad "origin" używanym przez git remote, nazwałem tę asocjacje do zdalnego repo S7 zamiast origin 
+         git remote add assoc-name remote-ulr
