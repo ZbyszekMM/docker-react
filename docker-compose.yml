@@ -8,8 +8,10 @@ services:
          - "3001:3000"
       volumes:                # zobacz też helpers\docker instrukcja run. Żeby to g. zadziałało trzeba było zastosować windowsową notację ścieżek  
                               # i uczynić ścieżki absolute
-         -  "\\app\\node_modules"      # nie przemapowuj tego folderu kontenera, czyli używaj tego co jest w kontenerze
-         -  ".\\:\\app"                # przemapuj <zlinkuj> relative to Compose file  na /app w kontenerze. UWAGA na dwukropek, BEZ ŻADNYCH spacji. 
+         -  "/app/node_modules"      # this will make the directory container_path inside the container live outside the Union File System of the container 
+                                     # and directly accessible on the host. 
+                                     # (SIDE) EFFECT: nie przemapowuj tego folderu kontenera, czyli używaj tego co jest w kontenerze, COCIAZ poniżej jest mapowany 
+         -  "./:/app"                # przemapuj <zlinkuj> relative to Compose file  na /app w kontenerze. UWAGA na dwukropek, BEZ ŻADNYCH spacji. 
 #  testsrv:     # the quasi service - the test service. Not ideal solution. Port statement niepotrzebne, testy wewnątrz kontenera
 #      build: 
 #         context: .          # kontekstem ścieżki plikow jest to current working directory. Nie wiem, czy kontenera czy "zewnętrza"

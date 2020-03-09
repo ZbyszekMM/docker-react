@@ -28,6 +28,6 @@ COPY . .
 #CMD ["ls", "/app/node_modules",  "-al"] 
 #wynik powyższego ls: prawidłowy
 
-# uruchamia development server; for development only 
+# uruchamia development server; for development only - zagląda do package.json, szuka skryptu "start", i znaajduje tam właściwą komendę uruchomieniową
 CMD ["npm", "run", "start"]
 #CMD ["sh"]

@@ -7,7 +7,6 @@
 # ten Dockerfile jest podzbiorem Dockerfile.dev - przynajmniej pierwsza sekcja, ponieważ operacje mapowania wolumenów, są niepotrzebne dla 
 # wersji produkcyjnej
 
-#                               BUILD PHASE
 # tworzy tag dla wyniku (?) tej sekcji (po angielsku - mylące - step)
 FROM node:alpine as builder  
 WORKDIR '/app'
@@ -18,11 +17,9 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-#                               RUN PHASE
+
 # DRUGA sekcja. Nginx jest od razu uruchomiony w momencie uruchomienia kontenera stąd brak "RUN".
 # NA produkcji istotne jest tylko to co jest w katalogu build. Kopiowane jest to katalogu, w którym nginx spodziewa się zawartości
-# Czyli NIE kopiowane jest 150MB node_modules i tego wszystkiego podobnego
-
 FROM nginx
 COPY --from=builder /app/build /usr/share/nginx/html
 

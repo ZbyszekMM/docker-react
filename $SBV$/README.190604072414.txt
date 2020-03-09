@@ -1,9 +1,9 @@
-﻿CEL
+CEL
     Pokazuje production grade CI workflow (z githhub, Travis i Beanstalk <EBS>), przedmiot sekcji 6, 7 kursu dockera.
     Dodatkowo pojawia się:
-        nginx - w tym projekcie jest tylko web serwerem, nie robi routingu (to jest w Fibo)
-        multistage Dockerfile - dyrektywa FROM pojawia się kilka razy		
-        react - 
+        nginx, 
+        multistep Dockerfile (wydaje mi się w postaci docker-compose.yml zawierającego wiele serwisów)
+		react - 
 
 URUCHOMIENIE 
       lokalnie - zajrzyj do Dockerfile
@@ -20,9 +20,5 @@ POPRAWKI
 PLIKI
 	.\src - właściwie wszystko z gotowego templejtu react	
 	.\src\app.js - główna aplikacja sterująca frontendem
+	
 
-REPOZYTORIUM W GITHUB
-    docker-react
-
-QUIRKS
-    Sposób w jaki AWS EBS przetwarza dyrektywę EXPOSE z Dockerfile
