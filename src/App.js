@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          Najnowsza zmiana czyli podła zmiana
+          Nie do wiary, myślałem, że to nie dojdzie do AWS
         </p>
         <a
           className="App-link"

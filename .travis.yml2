@@ -1,0 +1,30 @@
+sudo: required
+services:
+- docker
+
+before_install:
+
+# image dostał nazwę zm/docker-react, tylko travis proces będzie znać tn tag
+- docker build -t zm/docker-react -f Dockerfile.dev . 
+
+
+
+# tutaj wszystkie komendy niezbędne do wykonania testów. Travis będzie sprawdzał rezultat każdej z tych komend
+# Jako ostatnie parameter docker run jest polecenie, które będzie wykonane w kontenerze po uruchomieniu jego
+# w tym przypadku jest to npm run test .  -- --coverage to komenda, która 
+script:
+  - docker run zm/docker-react npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-central-1"
+  app: "docker-react" # nazwa aplikacji zgodnie z tym co jest w Elastic Beanstalk (EBS)
+  env: "DockerReact-env" # nazwa pierwszego środowiska w EBS
+  bucket_name: "elasticbeanstalk-eu-central-1-392634375159" #nazwa bucketu, do którego uploadowany jest kod. JEDEN bucket dla wszystkich projektów EBS
+  bucket_path: "docker-react"
+  skip_cleanup: true # dodałem za dokumentacją travis by uniknąć problemu "no stash entries found" podczas deployowania do EBS
+  on:
+    branch: master # trigger deployment TYLKO jeśli zostanie skomitowana zmiana w master branch kodu
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY" # nie wiadomo dlaczego tutaj zadziałało autorowi tylko jeśli w ""
