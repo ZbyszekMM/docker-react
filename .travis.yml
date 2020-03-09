@@ -18,7 +18,7 @@ script:
   - docker run -e CI=true zm/docker-react npm run test
 
 deploy:
-  edge: true # fix na jakiś błąd - video #99
+  edge: true # fix na jakiś błąd - video
   provider: elasticbeanstalk
   region: "us-east-1"
   app: "DockerCourse-3FrontEnd" # nazwa aplikacji zgodnie z tym co jest w Elastic Beanstalk (EBS)
@@ -30,5 +30,5 @@ deploy:
   on:
     branch: master # trigger deployment TYLKO jeśli zostanie skomitowana zmiana w master branch kodu
   access_key_id: $AWS_ACCESS_KEY     # te są skonfigurowane w environment secrets w Travis. 
-  secret_access_key:
-    secure: $AWS_SECRET_KEY # wartość przechowywana w d:/zbyszek/devopsdev/AWS keys
+  secret_access_key: $AWS_SECRET_KEY
+#    secure: $AWS_SECRET_KEY # wartość przechowywana w d:/zbyszek/devopsdev/AWS keys
