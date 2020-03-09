@@ -17,3 +17,17 @@ script:
 #  - docker run zm/docker-react npm run test -- --coverage    # to mi zadziałało, chociaż kurs mówi, że je nie powinno
    - docker run -e CI=true zm/docker-react npm run test
 
+   deploy:
+    provider: elasticbeanstalk
+    region: "us-east-1"
+    app: "DockerCourse-3FrontEnd" # nazwa aplikacji zgodnie z tym co jest w Elastic Beanstalk (EBS)
+    env: "Dockercourse3frontend-env" # nazwa pierwszego środowiska w EBS
+    bucket_name: "elasticbeanstalk-us-east-1-392634375159" # nazwa bucketu, do którego uploadowany jest kod. JEDEN bucket dla wszystkich projektów EBS.
+                                                              # Bucket tworzony jet automatycznie, poszukaj go w S3
+    bucket_path: "DockerCourse-3FrontEnd"   # pełna "ścieżka" do zipa z plikiem aplikacji. 
+    skip_cleanup: true # dodałem za dokumentacją travis by uniknąć problemu "no stash entries found" podczas deployowania do EBS
+    on:
+      branch: master # trigger deployment TYLKO jeśli zostanie skomitowana zmiana w master branch kodu
+    access_key_id: $AWS_ACCESS_KEY     # te są skonfigurowane w environment secrets w Travis. 
+    secret_access_key:
+      secure: $AWS_SECRET_KEY # wartość przechowywana w d:/zbyszek/devopsdev/AWS keys
