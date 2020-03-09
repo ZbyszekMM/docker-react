@@ -18,6 +18,7 @@ script:
   - docker run -e CI=true zm/docker-react npm run test
 
 deploy:
+  edge: true # fix na jakiś błąd - video #99
   provider: elasticbeanstalk
   region: "us-east-1"
   app: "DockerCourse-3FrontEnd" # nazwa aplikacji zgodnie z tym co jest w Elastic Beanstalk (EBS)
