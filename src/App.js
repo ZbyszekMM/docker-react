@@ -9,7 +9,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
-          Nie do wiary, myślałem, że to nie dojdzie do AWS. Ukryłem jeszcze hasło dla użytkownika-deployera w Travis.
+          Nie do wiary, myślałem, że to nie dojdzie do AWS. Ta zmiana jest z 2020branch
         </p>
         <a
           className="App-link"
